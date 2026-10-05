@@ -1,0 +1,407 @@
+<title>International Literacy Crusade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: single column, full-bleed color bands, 1080px content measure */
+:root{
+  --ground:#FBF6EC; --surface:#FFFDF8; --band:#F2E7D5; --panel:#17242E;
+  --ink:#17242E; --ink-soft:#3C4C58; --ink-faint:#8C7B62; --line:#E2D3BA;
+  --marigold:#E5A93F; --teal:#0F5F57; --teal-tint:#E6F0EC; --on-panel:#FBF6EC; --on-panel-soft:#A9B7C2;
+  --display:Fraunces,Georgia,"Times New Roman",serif;
+  --body:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121A20; --surface:#1A242C; --band:#1E2A31; --panel:#0C1318;
+    --ink:#F3EADA; --ink-soft:#B4C1C9; --ink-faint:#8A9299; --line:#2D3A44;
+    --marigold:#F0BC5E; --teal:#7FCDBB; --teal-tint:#17282A; --on-panel:#F3EADA; --on-panel-soft:#9FAEB8;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121A20; --surface:#1A242C; --band:#1E2A31; --panel:#0C1318;
+  --ink:#F3EADA; --ink-soft:#B4C1C9; --ink-faint:#8A9299; --line:#2D3A44;
+  --marigold:#F0BC5E; --teal:#7FCDBB; --teal-tint:#17282A; --on-panel:#F3EADA; --on-panel-soft:#9FAEB8;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+h1,h2,h3{text-wrap:balance;margin:0}
+a{color:var(--teal)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--panel);color:var(--on-panel)}
+.head-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{display:flex;align-items:center;gap:12px;min-width:0}
+.mark-name{font-weight:700;letter-spacing:2.4px;font-size:13px;line-height:1.3}
+.head-cta{flex-shrink:0;background:var(--marigold);color:#17242E;font-weight:800;font-size:13px;letter-spacing:1.6px;padding:9px 16px;border-radius:999px;text-decoration:none}
+
+/* hero */
+.hero{padding-block:clamp(36px,7vw,72px)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--teal);margin-bottom:18px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,10vw,104px);line-height:1.02;letter-spacing:-2px}
+.hi{display:inline-block;background:var(--marigold);color:#17242E;padding:0 .14em .06em;border-radius:12px}
+.lead{margin-top:22px;max-width:60ch;font-size:clamp(18px,2.4vw,24px);line-height:1.5;color:var(--ink-soft)}
+.where{margin-top:20px;display:flex;align-items:flex-start;gap:10px;font-size:18px}
+.where b{color:var(--teal)}
+.hero-acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:13px 22px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-main{background:var(--panel);color:var(--on-panel)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+
+/* illustration band */
+.band{background:var(--band);padding-block:clamp(24px,4vw,40px)}
+.band svg{width:100%;height:auto;display:block}
+
+/* fact row */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-block:clamp(28px,5vw,44px)}
+@media (max-width:640px){.facts{grid-template-columns:1fr}}
+.fact{display:flex;align-items:center;gap:12px;background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:14px 22px;min-width:0}
+.fact span{font-weight:600;font-size:17px}
+
+/* teacher strip */
+.teacher{display:flex;align-items:center;gap:18px;background:var(--teal-tint);border:2px solid var(--line);border-radius:22px;padding:22px 26px}
+.teacher p{margin:0;font-size:19px;line-height:1.45}
+.teacher strong{font-weight:700}
+
+/* program */
+.program{padding-block:clamp(40px,7vw,72px)}
+.program h2,.visit h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:1.12}
+.program>p{max-width:58ch;color:var(--ink-soft);margin-top:12px}
+.cards{margin-top:30px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:26px 24px;min-width:0}
+.card h3{font-family:var(--display);font-weight:600;font-size:23px;margin-bottom:10px}
+.card p{margin:0;color:var(--ink-soft);font-size:16.5px}
+.card-num{font-size:12px;font-weight:800;letter-spacing:2.4px;color:var(--teal);margin-bottom:14px}
+
+/* visit */
+.visit{background:var(--panel);color:var(--on-panel);border-radius:30px;padding:clamp(30px,5vw,48px);margin-bottom:clamp(40px,7vw,72px)}
+.visit h2{color:var(--on-panel)}
+.visit>p{color:var(--on-panel-soft);margin-top:10px;max-width:50ch}
+.contact{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+.cbox{border:2px solid rgba(251,246,236,.35);border-radius:18px;padding:20px 22px;min-width:0}
+.clabel{font-size:12px;font-weight:800;letter-spacing:2.4px;color:var(--marigold)}
+.cval{margin-top:8px;font-size:19px;font-weight:600;word-break:break-word;color:var(--on-panel)}
+.copy{margin-top:12px;background:transparent;border:1.5px solid rgba(251,246,236,.35);color:var(--on-panel);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.copy:hover{border-color:var(--marigold)}
+
+/* footer */
+.foot{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;padding-bottom:40px}
+.foot i{font-family:var(--display);font-size:20px;color:var(--ink-soft)}
+.foot small{font-size:12px;font-weight:700;letter-spacing:2.2px;color:var(--ink-faint)}
+/* schedule */
+.when{padding-block:clamp(10px,3vw,20px)}
+.when h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:1.12}
+.times{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:640px){.times{grid-template-columns:1fr}}
+.slot{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:24px;min-width:0}
+.slot h3{font-size:12px;font-weight:800;letter-spacing:2.4px;color:var(--teal);margin-bottom:14px}
+.slot dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-variant-numeric:tabular-nums}
+.slot dt{font-weight:700}
+.slot dd{margin:0;color:var(--ink-soft)}
+.slot .byappt{margin:14px 0 0;font-size:14.5px;color:var(--ink-faint)}
+.flex-note{margin-top:18px;display:flex;align-items:flex-start;gap:12px;background:var(--teal-tint);border:2px solid var(--line);border-radius:18px;padding:18px 22px}
+.flex-note p{margin:0;font-size:17px}
+
+/* video */
+.watch{padding-block:clamp(40px,7vw,64px)}
+.watch h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:1.12}
+.watch>p{max-width:58ch;color:var(--ink-soft);margin-top:12px}
+.player{margin-top:26px;position:relative;aspect-ratio:16/9;max-width:100%;border-radius:22px;overflow:hidden;border:2px solid var(--line);background:var(--panel)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.facade{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;border:0;width:100%;padding:24px;background:var(--panel);color:var(--on-panel);font-family:inherit;text-align:center}
+.facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.facade .play{position:relative;width:76px;height:76px;border-radius:50%;background:var(--marigold);display:flex;align-items:center;justify-content:center}
+.facade .cap{position:relative;font-weight:700;font-size:17px;letter-spacing:.3px}
+.watch-alt{margin-top:14px;font-size:15px;color:var(--ink-faint)}
+
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <div class="mark">
+      <svg width="30" height="30" viewBox="0 0 42 42" aria-hidden="true" style="flex-shrink:0">
+        <path d="M4 9 L20 13 L20 35 L4 31 Z" fill="none" stroke="#E5A93F" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M38 9 L22 13 L22 35 L38 31 Z" fill="none" stroke="#E5A93F" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M21 12 L21 35" stroke="#E5A93F" stroke-width="2.8" stroke-linecap="round"/>
+      </svg>
+      <div class="mark-name">INTERNATIONAL<br>LITERACY CRUSADE</div>
+    </div>
+    <a class="head-cta" href="#visit">GET STARTED</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div class="eyebrow">READING · COMPREHENSION · STUDY SKILLS</div>
+    <h1><span class="hi">Free</span> Tutoring</h1>
+    <p class="lead">Tutoring that builds real understanding — not just a passing grade. Open to every student in grades K-6 in our community, at no cost to your family.</p>
+    <div class="where">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;margin-top:3px">
+        <path d="M12 22 C12 22 19 15.5 19 10 A7 7 0 0 0 5 10 C5 15.5 12 22 12 22 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" style="color:var(--teal)"/>
+        <circle cx="12" cy="10" r="2.6" fill="var(--teal)"/>
+      </svg>
+      <div><b>Location:</b> 8039 S. Vermont Ave., Los Angeles, CA 90044</div>
+    </div>
+    <div class="hero-acts">
+      <a class="btn btn-main" href="#visit">See how to enroll</a>
+      <a class="btn btn-ghost" href="#program">What we work on</a>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="band-h">
+    <h2 id="band-h" style="position:absolute;left:-9999px">Students in our program</h2>
+    <div class="wrap">
+      <svg viewBox="0 92 940 222" role="img" aria-label="Illustration of six children of different skin tones standing together, some holding books">
+        <g transform="translate(90,10.2) scale(0.97)">
+          <ellipse cx="0" cy="184" rx="50" ry="66" fill="#7A4326"/>
+          <circle cx="-37" cy="162" r="8" fill="#F5CDA9"/><circle cx="37" cy="162" r="8" fill="#F5CDA9"/>
+          <circle cx="0" cy="158" r="38" fill="#F5CDA9"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#2B211B"/><circle cx="13" cy="160" r="3.4" fill="#2B211B"/>
+          <path d="M-11 174 Q0 183 11 174" fill="none" stroke="#2B211B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 154 C-38 116 -20 116 0 116 C20 116 38 116 38 154 C32 136 18 130 0 133 C-18 136 -30 136 -38 154 Z" fill="#7A4326"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#E5B892"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#1F7A6E"/>
+          <rect x="-52" y="212" width="20" height="62" rx="10" fill="#186056"/><rect x="32" y="212" width="20" height="62" rx="10" fill="#186056"/>
+          <rect x="-44" y="246" width="88" height="54" rx="5" fill="#C9573B"/>
+          <rect x="-36" y="252" width="72" height="42" rx="3" fill="#FBF6EC"/>
+          <rect x="-1.5" y="252" width="3" height="42" fill="#C9573B"/>
+          <rect x="-30" y="260" width="22" height="3" rx="1.5" fill="#E0A99A"/><rect x="-30" y="270" width="22" height="3" rx="1.5" fill="#E0A99A"/>
+          <rect x="8" y="260" width="22" height="3" rx="1.5" fill="#E0A99A"/><rect x="8" y="270" width="22" height="3" rx="1.5" fill="#E0A99A"/>
+          <circle cx="-46" cy="272" r="10.5" fill="#F5CDA9"/><circle cx="46" cy="272" r="10.5" fill="#F5CDA9"/>
+        </g>
+        <g transform="translate(240,-11.2) scale(1.04)">
+          <circle cx="-29" cy="134" r="16" fill="#241812"/><circle cx="-9" cy="122" r="18" fill="#241812"/>
+          <circle cx="12" cy="122" r="18" fill="#241812"/><circle cx="30" cy="135" r="16" fill="#241812"/>
+          <circle cx="0" cy="141" r="23" fill="#241812"/>
+          <circle cx="-37" cy="162" r="8" fill="#E3B183"/><circle cx="37" cy="162" r="8" fill="#E3B183"/>
+          <circle cx="0" cy="158" r="38" fill="#E3B183"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#2B211B"/><circle cx="13" cy="160" r="3.4" fill="#2B211B"/>
+          <path d="M-11 174 Q0 184 11 174" fill="none" stroke="#2B211B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 152 C-38 118 -20 118 0 118 C20 118 38 118 38 152 C32 138 18 132 0 135 C-18 138 -30 138 -38 152 Z" fill="#241812"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#CE9C6E"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#C9573B"/>
+          <rect x="-52" y="212" width="20" height="78" rx="10" fill="#AC452D"/>
+          <circle cx="-42" cy="288" r="10.5" fill="#E3B183"/>
+          <g transform="rotate(-38 42 220)"><rect x="32" y="212" width="20" height="74" rx="10" fill="#AC452D"/><circle cx="42" cy="286" r="10.5" fill="#E3B183"/></g>
+        </g>
+        <g transform="translate(390,19.3) scale(0.94)">
+          <circle cx="-41" cy="120" r="21" fill="#241A14"/><circle cx="41" cy="120" r="21" fill="#241A14"/>
+          <ellipse cx="0" cy="160" rx="44" ry="48" fill="#241A14"/>
+          <circle cx="-37" cy="162" r="8" fill="#B87A4E"/><circle cx="37" cy="162" r="8" fill="#B87A4E"/>
+          <circle cx="0" cy="158" r="38" fill="#B87A4E"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#2B211B"/><circle cx="13" cy="160" r="3.4" fill="#2B211B"/>
+          <path d="M-11 174 Q0 183 11 174" fill="none" stroke="#2B211B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 154 C-38 116 -20 116 0 116 C20 116 38 116 38 154 C32 136 18 130 0 133 C-18 136 -30 136 -38 154 Z" fill="#241A14"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#A2663E"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#E5A93F"/>
+          <rect x="-52" y="212" width="20" height="62" rx="10" fill="#C88E2B"/><rect x="32" y="212" width="20" height="62" rx="10" fill="#C88E2B"/>
+          <rect x="-44" y="246" width="88" height="54" rx="5" fill="#1F7A6E"/>
+          <rect x="-36" y="252" width="72" height="42" rx="3" fill="#FBF6EC"/>
+          <rect x="-1.5" y="252" width="3" height="42" fill="#1F7A6E"/>
+          <rect x="-30" y="260" width="22" height="3" rx="1.5" fill="#9CC6BF"/><rect x="-30" y="270" width="22" height="3" rx="1.5" fill="#9CC6BF"/>
+          <rect x="8" y="260" width="22" height="3" rx="1.5" fill="#9CC6BF"/><rect x="8" y="270" width="22" height="3" rx="1.5" fill="#9CC6BF"/>
+          <circle cx="-46" cy="272" r="10.5" fill="#B87A4E"/><circle cx="46" cy="272" r="10.5" fill="#B87A4E"/>
+        </g>
+        <g transform="translate(540,-17.3) scale(1.06)">
+          <circle cx="-37" cy="162" r="8" fill="#8C5A34"/><circle cx="37" cy="162" r="8" fill="#8C5A34"/>
+          <circle cx="0" cy="158" r="38" fill="#8C5A34"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#2B211B"/><circle cx="13" cy="160" r="3.4" fill="#2B211B"/>
+          <path d="M-11 174 Q0 184 11 174" fill="none" stroke="#2B211B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 150 C-38 120 -20 122 0 122 C20 122 38 120 38 150 C34 138 20 136 0 138 C-20 140 -32 140 -38 150 Z" fill="#191210"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#78482A"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#3F7EA6"/>
+          <rect x="-52" y="212" width="20" height="78" rx="10" fill="#336687"/><rect x="32" y="212" width="20" height="78" rx="10" fill="#336687"/>
+          <circle cx="-42" cy="288" r="10.5" fill="#8C5A34"/><circle cx="42" cy="288" r="10.5" fill="#8C5A34"/>
+        </g>
+        <g transform="translate(690,4.1) scale(0.99)">
+          <rect x="-56" y="150" width="16" height="92" rx="8" fill="#140E0A"/><rect x="40" y="150" width="16" height="92" rx="8" fill="#140E0A"/>
+          <circle cx="-48" cy="246" r="7" fill="#E5A93F"/><circle cx="48" cy="246" r="7" fill="#E5A93F"/>
+          <circle cx="-37" cy="162" r="8" fill="#6B4126"/><circle cx="37" cy="162" r="8" fill="#6B4126"/>
+          <circle cx="0" cy="158" r="38" fill="#6B4126"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#241A14"/><circle cx="13" cy="160" r="3.4" fill="#241A14"/>
+          <path d="M-11 174 Q0 183 11 174" fill="none" stroke="#241A14" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 154 C-38 116 -20 116 0 116 C20 116 38 116 38 154 C32 136 18 130 0 133 C-18 136 -30 136 -38 154 Z" fill="#140E0A"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#59341D"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#8C4A6B"/>
+          <rect x="-52" y="212" width="20" height="62" rx="10" fill="#713A55"/><rect x="32" y="212" width="20" height="62" rx="10" fill="#713A55"/>
+          <rect x="-44" y="246" width="88" height="54" rx="5" fill="#E5A93F"/>
+          <rect x="-36" y="252" width="72" height="42" rx="3" fill="#FBF6EC"/>
+          <rect x="-1.5" y="252" width="3" height="42" fill="#E5A93F"/>
+          <rect x="-30" y="260" width="22" height="3" rx="1.5" fill="#EBD3A4"/><rect x="-30" y="270" width="22" height="3" rx="1.5" fill="#EBD3A4"/>
+          <rect x="8" y="260" width="22" height="3" rx="1.5" fill="#EBD3A4"/><rect x="8" y="270" width="22" height="3" rx="1.5" fill="#EBD3A4"/>
+          <circle cx="-46" cy="272" r="10.5" fill="#6B4126"/><circle cx="46" cy="272" r="10.5" fill="#6B4126"/>
+        </g>
+        <g transform="translate(845,-2.1) scale(1.01)">
+          <ellipse cx="0" cy="152" rx="44" ry="44" fill="#D9A441"/>
+          <circle cx="-37" cy="162" r="8" fill="#F0C9A4"/><circle cx="37" cy="162" r="8" fill="#F0C9A4"/>
+          <circle cx="0" cy="158" r="38" fill="#F0C9A4"/>
+          <circle cx="-13" cy="160" r="3.4" fill="#2B211B"/><circle cx="13" cy="160" r="3.4" fill="#2B211B"/>
+          <path d="M-11 174 Q0 184 11 174" fill="none" stroke="#2B211B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-38 152 C-38 114 -18 114 2 116 C22 118 38 124 38 152 C34 134 20 126 -2 132 C-16 136 -28 138 -38 152 Z" fill="#D9A441"/>
+          <rect x="-11" y="188" width="22" height="20" fill="#DFB48C"/>
+          <rect x="-46" y="198" width="92" height="107" rx="26" fill="#6E8B4A"/>
+          <rect x="-52" y="212" width="20" height="78" rx="10" fill="#59723A"/><rect x="32" y="212" width="20" height="78" rx="10" fill="#59723A"/>
+          <circle cx="-42" cy="288" r="10.5" fill="#F0C9A4"/><circle cx="42" cy="288" r="10.5" fill="#F0C9A4"/>
+        </g>
+        <rect x="0" y="300" width="940" height="14" rx="7" fill="#DCC9A6"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="10" fill="var(--marigold)"/><path d="M6.5 11.3 L9.6 14.4 L15.5 7.8" fill="none" stroke="#17242E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Effective Tutors</span>
+      </div>
+      <div class="fact">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="10" fill="var(--marigold)"/><path d="M6.5 11.3 L9.6 14.4 L15.5 7.8" fill="none" stroke="#17242E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Grades K-6</span>
+      </div>
+      <div class="fact">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="10" fill="var(--marigold)"/><path d="M6.5 11.3 L9.6 14.4 L15.5 7.8" fill="none" stroke="#17242E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>100% free</span>
+      </div>
+    </div>
+
+    <div class="teacher">
+      <svg width="40" height="40" viewBox="0 0 38 38" aria-hidden="true" style="flex-shrink:0">
+        <path d="M19 7 L34 14 L19 21 L4 14 Z" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M10 17 L10 26 C10 26 13.5 30 19 30 C24.5 30 28 26 28 26 L28 17" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 14 L34 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      <p>Our tutoring is <strong>managed by a master teacher and educator with over 30 years of experience</strong> — and every tutor is trained and supervised.</p>
+    </div>
+
+    <section class="program" id="program">
+      <h2>What your student works on</h2>
+      <p>Every student starts where they actually are, not where a grade level says they should be. Sessions are one student at a time, with the same tutor week to week.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">READING</div>
+          <h3>Decoding the word on the page</h3>
+          <p>Sounds, blends, and whole words — until reading aloud stops being a struggle and starts being automatic.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">COMPREHENSION</div>
+          <h3>Understanding what was read</h3>
+          <p>No skipped words. A student who can define every word in a sentence can explain the sentence back, and keep it.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">STUDY SKILLS</div>
+          <h3>Learning how to learn</h3>
+          <p>How to look a word up, how to work through confusion, and how to study without someone standing over them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="when" id="when">
+      <h2>When we meet</h2>
+      <div class="times">
+        <div class="slot">
+          <h3>TUTORING</h3>
+          <dl>
+            <dt>Tuesday</dt><dd>3:30 – 6:00 PM</dd>
+            <dt>Saturday</dt><dd>9:30 AM – 12:00 PM</dd>
+          </dl>
+        </div>
+        <div class="slot">
+          <h3>ASSESSMENTS</h3>
+          <dl>
+            <dt>Saturday</dt><dd>12:30 – 2:00 PM</dd>
+          </dl>
+          <p class="byappt">By appointment — contact us to book one.</p>
+        </div>
+      </div>
+      <div class="flex-note">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;margin-top:2px">
+          <circle cx="12" cy="12" r="9.2" fill="none" stroke="var(--teal)" stroke-width="2.2"/>
+          <path d="M12 7.2 L12 12.4 L15.6 14.6" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>If those times do not work for your family, email us and we will set up a time that does.</p>
+      </div>
+    </section>
+
+    <section class="watch" id="watch">
+      <h2>See the program for yourself</h2>
+      <p>Families who have been through the program talk about what changed, and you get a look at the tutoring space on Vermont Ave.</p>
+      <div class="player">
+        <button class="facade" id="play-btn" type="button" aria-label="Play the video about the tutoring program">
+          <img src="https://i.ytimg.com/vi/KJcvwHuHsxo/maxresdefault.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+          <span class="play">
+            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M11 8 L23 15 L11 22 Z" fill="#17242E"/></svg>
+          </span>
+          <span class="cap">Community Tutoring Program — Vermont &amp; 81st</span>
+        </button>
+      </div>
+      <p class="watch-alt">Trouble playing it here? <a href="https://www.youtube.com/watch?v=KJcvwHuHsxo">Watch it on YouTube</a>.</p>
+    </section>
+
+    <section class="visit" id="visit">
+      <h2>Reserve a spot — reach out today.</h2>
+      <p>Call or email to get started.</p>
+      <div class="contact">
+        <div class="cbox">
+          <div class="clabel">EMAIL</div>
+          <div class="cval" id="v-email">info@internationalliteracycrusade.org</div>
+          <button class="copy" type="button" data-copy="v-email">Copy</button>
+        </div>
+        <div class="cbox">
+          <div class="clabel">PHONE</div>
+          <div class="cval" id="v-phone">213-761-7980</div>
+          <button class="copy" type="button" data-copy="v-phone">Copy</button>
+        </div>
+        <div class="cbox">
+          <div class="clabel">VISIT</div>
+          <div class="cval" id="v-addr">8039 S. Vermont Ave.<br>Los Angeles, CA 90044</div>
+          <button class="copy" type="button" data-copy="v-addr">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <i>Literacy changes everything.</i>
+      <small>INTERNATIONAL LITERACY CRUSADE</small>
+    </footer>
+  </div>
+</main>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText.replace(/\s*\n\s*/g, ', ');
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { select(el); });
+    } catch (e) { select(el); }
+  });
+});
+var playBtn = document.getElementById("play-btn");
+if (playBtn) {
+  playBtn.addEventListener("click", function () {
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/KJcvwHuHsxo?autoplay=1&rel=0";
+    f.title = "Community Tutoring Program";
+    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    f.allowFullscreen = true;
+    playBtn.parentNode.appendChild(f);
+    playBtn.remove();
+  });
+}
+
+function select(el) {
+  var r = document.createRange();
+  r.selectNodeContents(el);
+  var s = window.getSelection();
+  s.removeAllRanges();
+  s.addRange(r);
+}
+</script>
