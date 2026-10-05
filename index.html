@@ -109,6 +109,15 @@ a{color:var(--teal)}
 .flex-note{margin-top:18px;display:flex;align-items:flex-start;gap:12px;background:var(--teal-tint);border:2px solid var(--line);border-radius:18px;padding:18px 22px}
 .flex-note p{margin:0;font-size:17px}
 
+.start-lead{max-width:58ch;color:var(--ink-soft);margin-top:12px;font-size:19px}
+.steps{margin-top:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:700px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:26px 26px 28px;min-width:0}
+.step-n{font-size:12px;font-weight:800;letter-spacing:2.6px;color:var(--teal)}
+.step h3{font-family:var(--display);font-weight:600;font-size:26px;margin-top:12px}
+.step-when{margin:14px 0 0;font-size:20px;font-weight:700;color:var(--ink);line-height:1.45;font-variant-numeric:tabular-nums}
+.step p.step-body{margin:10px 0 0;color:var(--ink-soft);font-size:16.5px}
+
 /* video */
 .watch{padding-block:clamp(40px,7vw,64px)}
 .watch h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:1.12}
@@ -131,7 +140,7 @@ a{color:var(--teal)}
       </svg>
       <div class="mark-name">INTERNATIONAL<br>LITERACY CRUSADE</div>
     </div>
-    <a class="head-cta" href="#visit">GET STARTED</a>
+    <a class="head-cta" href="#start">GET STARTED</a>
   </div>
 </header>
 
@@ -148,7 +157,7 @@ a{color:var(--teal)}
       <div><b>Location:</b> 8039 S. Vermont Ave., Los Angeles, CA 90044</div>
     </div>
     <div class="hero-acts">
-      <a class="btn btn-main" href="#visit">See how to enroll</a>
+      <a class="btn btn-main" href="#start">See how to enroll</a>
       <a class="btn btn-ghost" href="#program">What we work on</a>
     </div>
   </section>
@@ -300,22 +309,21 @@ a{color:var(--teal)}
       </div>
     </section>
 
-    <section class="when" id="when">
-      <h2>When we meet</h2>
-      <div class="times">
-        <div class="slot">
-          <h3>TUTORING</h3>
-          <dl>
-            <dt>Tuesday</dt><dd>3:30 – 6:00 PM</dd>
-            <dt>Saturday</dt><dd>9:30 AM – 12:00 PM</dd>
-          </dl>
+    <section class="when" id="start">
+      <h2>How to get started</h2>
+      <p class="start-lead">Every student begins with an assessment. It tells us exactly where your student is, so the first session starts in the right place instead of guessing. After that, they join tutoring on the regular days.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">STEP ONE</div>
+          <h3>Schedule an assessment</h3>
+          <p class="step-when">Saturdays · 12:30 – 2:00 PM</p>
+          <p class="step-body">By appointment only. Call or email and we will set a time in that window.</p>
         </div>
-        <div class="slot">
-          <h3>ASSESSMENTS</h3>
-          <dl>
-            <dt>Saturday</dt><dd>12:30 – 2:00 PM</dd>
-          </dl>
-          <p class="byappt">By appointment — contact us to book one.</p>
+        <div class="step">
+          <div class="step-n">STEP TWO</div>
+          <h3>Come to tutoring</h3>
+          <p class="step-when">Tuesdays · 3:30 – 6:00 PM<br>Saturdays · 9:30 AM – 12:00 PM</p>
+          <p class="step-body">Once assessed, your student attends on either day, with the same tutor week to week.</p>
         </div>
       </div>
       <div class="flex-note">
