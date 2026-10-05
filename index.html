@@ -114,11 +114,7 @@ a{color:var(--teal)}
 .watch h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:1.12}
 .watch>p{max-width:58ch;color:var(--ink-soft);margin-top:12px}
 .player{margin-top:26px;position:relative;aspect-ratio:16/9;max-width:100%;border-radius:22px;overflow:hidden;border:2px solid var(--line);background:var(--panel)}
-.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.facade{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;border:0;width:100%;padding:24px;background:var(--panel);color:var(--on-panel);font-family:inherit;text-align:center}
-.facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
-.facade .play{position:relative;width:76px;height:76px;border-radius:50%;background:var(--marigold);display:flex;align-items:center;justify-content:center}
-.facade .cap{position:relative;font-weight:700;font-size:17px;letter-spacing:.3px}
+.player video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--panel)}
 .watch-alt{margin-top:14px;font-size:15px;color:var(--ink-faint)}
 
 :focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
@@ -335,37 +331,12 @@ a{color:var(--teal)}
       <h2>See the program for yourself</h2>
       <p>Families who have been through the program talk about what changed, and you get a look at the tutoring space on Vermont Ave.</p>
       <div class="player">
-        <button class="facade" id="play-btn" type="button" aria-label="Play the video about the tutoring program">
-          <img src="https://i.ytimg.com/vi/KJcvwHuHsxo/maxresdefault.jpg" alt="" aria-hidden="true" onerror="this.remove()">
-          <span class="play">
-            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M11 8 L23 15 L11 22 Z" fill="#17242E"/></svg>
-          </span>
-          <span class="cap">Community Tutoring Program — Vermont &amp; 81st</span>
-        </button>
+        <video controls preload="metadata" playsinline poster="video-poster.jpg">
+          <source src="ilc-tutoring.mp4" type="video/mp4">
+          Your browser cannot play this video. <a href="ilc-tutoring.mp4">Download it instead.</a>
+        </video>
       </div>
-      <p class="watch-alt">Trouble playing it here? <a href="https://www.youtube.com/watch?v=KJcvwHuHsxo">Watch it on YouTube</a>.</p>
-    </section>
-
-    <section class="visit" id="visit">
-      <h2>Reserve a spot — reach out today.</h2>
-      <p>Call or email to get started.</p>
-      <div class="contact">
-        <div class="cbox">
-          <div class="clabel">EMAIL</div>
-          <div class="cval" id="v-email">info@internationalliteracycrusade.org</div>
-          <button class="copy" type="button" data-copy="v-email">Copy</button>
-        </div>
-        <div class="cbox">
-          <div class="clabel">PHONE</div>
-          <div class="cval" id="v-phone">213-761-7980</div>
-          <button class="copy" type="button" data-copy="v-phone">Copy</button>
-        </div>
-        <div class="cbox">
-          <div class="clabel">VISIT</div>
-          <div class="cval" id="v-addr">8039 S. Vermont Ave.<br>Los Angeles, CA 90044</div>
-          <button class="copy" type="button" data-copy="v-addr">Copy</button>
-        </div>
-      </div>
+    </div>
     </section>
 
     <footer class="foot">
@@ -386,18 +357,6 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     } catch (e) { select(el); }
   });
 });
-var playBtn = document.getElementById("play-btn");
-if (playBtn) {
-  playBtn.addEventListener("click", function () {
-    var f = document.createElement("iframe");
-    f.src = "https://www.youtube-nocookie.com/embed/KJcvwHuHsxo?autoplay=1&rel=0";
-    f.title = "Community Tutoring Program";
-    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    f.allowFullscreen = true;
-    playBtn.parentNode.appendChild(f);
-    playBtn.remove();
-  });
-}
 
 function select(el) {
   var r = document.createRange();
