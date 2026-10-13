@@ -339,11 +339,13 @@ a{color:var(--teal)}
       <h2>See the program for yourself</h2>
       <p>Families who have been through the program talk about what changed, and you get a look at the tutoring space on Vermont Ave.</p>
       <div class="player">
-        <video controls preload="metadata" playsinline poster="video-poster.jpg">
-          <source src="ilc-tutoring.mp4" type="video/mp4">
-          Your browser cannot play this video. <a href="ilc-tutoring.mp4">Download it instead.</a>
+        <video controls preload="metadata" playsinline webkit-playsinline poster="video-poster.jpg">
+          <source src="ilc-tutoring.mp4" type="video/mp4; codecs=&quot;avc1.42C01E, mp4a.40.2&quot;">
+          <source src="ilc-tutoring.webm" type="video/webm; codecs=&quot;vp9, opus&quot;">
+          <p>Your browser cannot play this video. <a href="ilc-tutoring.mp4">Open the video file directly.</a></p>
         </video>
       </div>
+      <p class="watch-alt">Video not playing? <a href="ilc-tutoring.mp4">Open it directly in a new tab.</a></p>
     </section>
 
     <section class="visit" id="visit">
